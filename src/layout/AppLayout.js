@@ -5,6 +5,9 @@ import { layoutStyles } from '../style-utils/LayoutStyles';
 import SideNav from './SideNav';
 import MainContent from './MainContent';
 import PaymentInitiationForm from '../components/PaymentIntiationForm';
+import CustomersList from '../components/CustomersList';
+import CustomersListPaginated from '../components/CustomersListPaginated';
+import CustomersListPaginatedSorted from '../components/CustomersListPaginatedSorted';
 
 export default function AppLayout(props) {
   const classes = layoutStyles();
@@ -34,7 +37,9 @@ export default function AppLayout(props) {
         handleDrawerClose={handleDrawerClose}
       />
       <MainContent>
-        <PaymentInitiationForm />
+        {/* <PaymentInitiationForm /> */}
+        {/* <CustomersList /> */}
+        <CustomersListPaginatedSorted />
       </MainContent>
     </div>
   );
