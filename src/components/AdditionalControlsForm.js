@@ -23,6 +23,7 @@ import GaussDatePicker from '../common-components/GaussDatePicker';
 import GaussCheckBox from '../common-components/GaussCheckbox';
 import GaussRadio from '../common-components/GaussRadio';
 import GaussSwitch from '../common-components/GaussSwitch';
+import GaussTabs from '../common-components/GaussTabs';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -111,6 +112,12 @@ const AdditionalControlsForm = () => {
             >
               Primary
             </Button>
+          </Grid>
+
+          <Grid item xs={12}>
+            <Paper className={classes.paper}>
+              <GaussTabs />
+            </Paper>
           </Grid>
         </Grid>
       </div>

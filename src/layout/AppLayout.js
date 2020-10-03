@@ -9,6 +9,11 @@ import AdditionalControlsForm from '../components/AdditionalControlsForm';
 import CustomersList from '../components/CustomersList';
 import CustomersListPaginated from '../components/CustomersListPaginated';
 import CustomersListPaginatedSorted from '../components/CustomersListPaginatedSorted';
+import TabCards from '../components/TabCards';
+import TabsWithTables from '../components/TabsAndTable';
+import GaussSimpleTable from '../common-components/GaussSimpleTable';
+
+import { notifications } from '../dummy/tab-tables';
 
 export default function AppLayout(props) {
   const classes = layoutStyles();
@@ -41,7 +46,8 @@ export default function AppLayout(props) {
         {/* <PaymentInitiationForm /> */}
         {/* <CustomersList /> */}
         {/* <CustomersListPaginatedSorted /> */}
-        <AdditionalControlsForm />
+        {/* <AdditionalControlsForm /> */}
+        <TabsWithTables />
       </MainContent>
     </div>
   );
