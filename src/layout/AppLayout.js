@@ -14,6 +14,8 @@ import TabsWithTables from '../components/TabsAndTable';
 import GaussSimpleTable from '../common-components/GaussSimpleTable';
 
 import { notifications } from '../dummy/tab-tables';
+import AccordionDemo from '../components/AccordionDemo';
+import DialogDemo from '../components/DialogDemo';
 
 export default function AppLayout(props) {
   const classes = layoutStyles();
@@ -47,7 +49,9 @@ export default function AppLayout(props) {
         {/* <CustomersList /> */}
         {/* <CustomersListPaginatedSorted /> */}
         {/* <AdditionalControlsForm /> */}
-        <TabsWithTables />
+        {/* <TabsWithTables /> */}
+        {/* <AccordionDemo /> */}
+        <DialogDemo />
       </MainContent>
     </div>
   );
