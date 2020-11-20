@@ -6,16 +6,18 @@ import { Grid } from '@material-ui/core';
 const DynamicForm = () => {
   const [formRowsCollection, setFormRowsCollection] = useState([]);
 
-  const handleInput = (value) => {
-    const elementIndex = formRowsCollection.findIndex(
-      (el) => el.index === value.index
-    );
+  const handleInput = (value, index) => {
+    let element = formRowsCollection[index];
 
-    if (elementIndex !== -1) {
-      formRowsCollection[elementIndex] = { ...value };
+    if (formRowsCollection[index]) {
+      console.log('found');
+      formRowsCollection[index] = { ...value };
     } else {
+      console.log('not found');
       formRowsCollection.push(value);
     }
+
+    console.log('update', formRowsCollection);
 
     const newCollection = [...formRowsCollection];
     setFormRowsCollection(newCollection);
@@ -23,16 +25,14 @@ const DynamicForm = () => {
 
   const addNew = () => {
     const newCollection = [...formRowsCollection];
-    const runningIndex = newCollection.length;
-    newCollection.push({ index: runningIndex });
+    newCollection.push({ customerName: '', amount: '' });
     setFormRowsCollection(newCollection);
   };
 
   const deleteRow = (index) => {
-    const newCollection = [
-      ...formRowsCollection.filter((el) => el.index != index),
-    ];
-    console.log('Fragment delete', formRowsCollection, newCollection);
+    formRowsCollection.splice(index, 1);
+    console.log('Delete', index, formRowsCollection);
+    const newCollection = [...formRowsCollection];
     setFormRowsCollection(newCollection);
   };
 
@@ -42,14 +42,19 @@ const DynamicForm = () => {
 
   return (
     <React.Fragment>
-      {formRowsCollection.map((el, i) => (
-        <FormFragment
-          key={i}
-          onChange={handleInput}
-          onDelete={deleteRow}
-          index={i}
-        />
-      ))}
+      {formRowsCollection.map((el, i) => {
+        console.log('Render', el, i);
+        return (
+          <FormFragment
+            key={i}
+            onChange={handleInput}
+            onDelete={deleteRow}
+            index={i}
+            customerName={el.customerName}
+            amount={el.amount}
+          />
+        );
+      })}
 
       <hr />
       <Grid container>

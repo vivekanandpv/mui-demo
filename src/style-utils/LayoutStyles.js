@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { deepOrange, deepPurple } from '@material-ui/core/colors';
+import { yellow, deepOrange, deepPurple, blue } from '@material-ui/core/colors';
 
 const drawerWidth = 240;
 
@@ -76,5 +76,41 @@ export const layoutStyles = makeStyles((theme) => ({
     flexGrow: 1,
     textAlign: 'left',
     fontWeight: 400,
+  },
+  fullPageComponent: {
+    height: '100vh',
+    width: '100%',
+    margin: 0,
+    opacity: 1,
+  },
+  loginCard: {
+    height: '60vh',
+  },
+  backgroundImage: {
+    backgroundImage: "url('gauss.jpg')",
+    backgroundPosition: 'left',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'contain',
+    backgroundColor: 'rgba(244, 244, 244, 0.8)',
+  },
+  shadowText: {
+    textShadow: '-1px -1px 2px #fff',
+    color: blue[800],
+    textAlign: 'right',
+  },
+  loginButton: {
+    padding: theme.spacing(2),
+  },
+  logo: {
+    maxWidth: '100%',
+    height: '130px',
+    backgroundPosition: 'center center',
+    backgroundRepeat: 'no-repeat',
+    backgroundImage: "url('logo_vector.png')",
+    backgroundSize: 'cover',
+  },
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: '#fff',
   },
 }));

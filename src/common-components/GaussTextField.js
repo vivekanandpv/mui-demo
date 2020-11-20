@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getInputFieldStyles } from '../style-utils/GaussStyles';
 import TextField from '@material-ui/core/TextField';
+import { Typography } from '@material-ui/core';
 
 const GaussTextField = (props) => {
   const inputFieldClasses = getInputFieldStyles();
   const [validationError, setValidationError] = useState(false);
   const [errorText, setErrorText] = useState(null);
+  const [value, setValue] = useState(null);
 
   const handleInput = (e) => {
-    const value = e.target.value;
+    setValue(e.target.value);
+  };
+
+  useEffect(() => {
     if (props.regex && !props.regex.test(value)) {
       setValidationError(true);
       setErrorText(props.validationError);
@@ -18,7 +23,12 @@ const GaussTextField = (props) => {
       setErrorText(null);
       props.onInput(value);
     }
-  };
+  }, [value]);
+
+  useEffect(() => {
+    setValue(props.value);
+  }, [props.value]);
+
   return (
     <React.Fragment>
       <TextField
@@ -34,6 +44,8 @@ const GaussTextField = (props) => {
         }}
         className={inputFieldClasses.root}
         onChange={handleInput}
+        value={value}
+        variant={props.variant ? props.variant : 'standard'}
       />
     </React.Fragment>
   );

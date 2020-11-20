@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
+import { Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,22 +20,23 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const FormFragment = (props) => {
+  console.log('Start', props);
   const [customerName, setCustomerName] = useState(null);
   const [amount, setAmount] = useState(null);
 
   const firstRender = useRef(true);
 
   useEffect(() => {
-    if (firstRender.current) {
-      firstRender.current = false;
-      return;
-    }
+    // if (firstRender.current) {
+    //   firstRender.current = false;
+    //   return;
+    // }
 
     transmitChange();
 
-    return () => {
-      firstRender.current = true;
-    };
+    // return () => {
+    //   firstRender.current = true;
+    // };
   }, [customerName, amount]);
 
   const onDelete = () => {
@@ -42,9 +44,11 @@ const FormFragment = (props) => {
   };
 
   const transmitChange = () => {
-    const formData = { customerName, amount: +amount, index: props.index };
+    const formData = { customerName, amount };
 
-    props.onChange(formData);
+    console.log('Transmit', formData);
+
+    props.onChange(formData, props.index);
   };
 
   return (
@@ -57,6 +61,7 @@ const FormFragment = (props) => {
             regex={/^[A-Za-z ]{3,50}$/}
             validationError='Only characters (max 50)'
             onInput={setCustomerName}
+            defaultValue={props.customerName}
           />
         </Grid>
         <Grid item xs={5} spacing={6} color='primary'>
@@ -65,7 +70,8 @@ const FormFragment = (props) => {
             type='number'
             regex={/^[0-9]{3,10}$/}
             validationError='Only numbers'
-            onInput={setAmount}
+            onInput={(v) => setAmount(+v)}
+            defaultValue={props.amount}
           />
         </Grid>
         <Grid item xs={2}>

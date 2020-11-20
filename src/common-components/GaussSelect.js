@@ -36,11 +36,11 @@ const GaussSelect = (props) => {
           onChange={handleInput}
         >
           <MenuItem value=''>Please select</MenuItem>
-          {props.options.map((o, i) => (
+          {/* {props.options.map((o, i) => (
             <MenuItem value={o.value} key={i}>
               {o.text}
             </MenuItem>
-          ))}
+          ))} */}
         </Select>
         <FormHelperText style={validationError ? { color: 'red' } : {}}>
           {props.validationError}
