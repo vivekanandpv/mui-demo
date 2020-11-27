@@ -18,6 +18,8 @@ import AccordionDemo from '../components/AccordionDemo';
 import DialogDemo from '../components/DialogDemo';
 import DynamicForm from '../components/DynamicForm';
 import PopoverDemo from '../components/PopoverDemo';
+import DataTable from '../components/DataTable';
+import SearchableDataTable from '../components/SearchableDataTable';
 
 export default function AppLayout(props) {
   const classes = layoutStyles();
@@ -56,6 +58,8 @@ export default function AppLayout(props) {
         {/* <DialogDemo /> */}
         {/* <DynamicForm /> */}
         {/* <PopoverDemo /> */}
+        {/* <DataTable /> */}
+        <SearchableDataTable />
       </MainContent>
     </div>
   );
